@@ -1,5 +1,5 @@
 * [Venom Bot](#Venom-Bot)
-* [Using Python, Selenium, and a Free NLP Service](Using-Selenium)
+* [Using Python, Selenium, and a Free NLP Service](#Using-Selenium)
 
 # Venom-Bot
 
@@ -194,7 +194,7 @@ Summary of the costs involved:
 
 
 
-* Using-Selenium
+# Using-Selenium
 
 Another fully free alternative for creating a WhatsApp chatbot involves using **Python and Selenium** for WhatsApp Web automation, combined with a Python library to handle natural language processing. Here’s how you can set this up:
 
@@ -218,6 +218,7 @@ Another fully free alternative for creating a WhatsApp chatbot involves using **
 
 2. **Install Required Packages:**
    - Install `selenium` and `webdriver-manager` packages for browser automation.
+     
    - Install an NLP library or use an open-source model for processing messages.
    ```bash
    pip install selenium webdriver-manager
