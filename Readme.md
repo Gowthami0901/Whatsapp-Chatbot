@@ -2,6 +2,7 @@
 
 To create a WhatsApp chatbot you can use free and open-source solutions or services that offer free tiers. Here's a method using **WhatsApp Web automation with the `venom-bot` library**, which is a popular tool for interacting with WhatsApp without needing a paid API.
 
+
 ## **Using Venom-Bot for a Free WhatsApp Chatbot**
 
 **Venom-Bot** allows you to create a WhatsApp bot by automating WhatsApp Web. It's suitable for personal or small-scale projects.
@@ -14,7 +15,9 @@ Here's a detailed guide on how to create a WhatsApp chatbot using **Venom-Bot** 
 ## **1. Prerequisites**
 
 - **Node.js:** Make sure Node.js is installed on your machine.
+  
 - **WhatsApp Account:** A WhatsApp account to scan the QR code for connection.
+  
 - **Browser:** A modern browser like Google Chrome.
 
 
@@ -22,6 +25,7 @@ Here's a detailed guide on how to create a WhatsApp chatbot using **Venom-Bot** 
 
 1. **Download and Install Node.js:**
    - Go to [Node.js official website](https://nodejs.org/).
+     
    - Download the latest LTS version and follow the installation instructions.
 
 
