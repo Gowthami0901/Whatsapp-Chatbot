@@ -1,4 +1,21 @@
-# Method 1
+# HOW TO CREATE WHATSAPP CHATBOT
+
+* [Method 1](#Method-1)
+   - [Prerequisities](#prerequisites)
+   - [Subscription](#subscription)
+
+* [Method 2](#Method-2)
+   - [Prerequisities](#prerequisites)
+   - [Subscription](#subscriptions)
+
+* [Twilio's free trial](#Twilio's-free_trial)
+   - [Prerequisities](#prerequisites)
+   - [Summary of Free Subscriptions](#subscriptions)
+
+* [Reference](#reference)
+
+
+# Method-1
 
 ## Prerequisites
 
@@ -106,7 +123,7 @@ app.listen(3000, () => {
 
 Creating a WhatsApp chatbot using the method you described involves several steps and components, which might have associated costs. Below are the possible subscriptions and costs involved:
 
-# SUBSCRIPTION
+# Subscription
 
 ## 1. **WhatsApp Business API Subscription:**
 
@@ -315,7 +332,7 @@ To start, you can use the free tiers of these services to develop and test your 
 - Monthly fees for the WhatsApp Business API may vary based on your usage and the number of messages sent.
 
 
-# Twilio's free trial 
+# Twilio's-free_trial 
 
 Creating a free WhatsApp chatbot involves using free trials and free tiers offered by various services. Here’s how you can do it with Twilio and Heroku, including the prerequisites and any necessary subscriptions.
 
@@ -461,9 +478,17 @@ Creating a free WhatsApp chatbot involves using free trials and free tiers offer
 1. Use the WhatsApp number provided by Twilio’s sandbox.
 2. Send a message to the number and test the responses based on your chatbot logic.
 
-## Summary of Free Subscriptions
+## Subscriptions
 
 - **Twilio**: Free trial with limited credits.
 - **Heroku**: Free tier for hosting the chatbot.
 - **Node.js and npm**: Free and open-source.
 
+
+# Reference
+
+```markdown
+[Connect with WhatsApp Cloud API](https://docs.rapidbott.com/help-center/platform/whatsapp-channel/connect-with-whatsapp-cloud-api)
+```
+
+You can use this link to access the detailed guide on connecting with the WhatsApp Cloud API.
