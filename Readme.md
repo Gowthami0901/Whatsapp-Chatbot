@@ -188,3 +188,138 @@ Summary of the costs involved:
 <br>
 
 **NOTE:** The tools and libraries mentioned are free, but you should consider compliance and any potential costs associated with hosting if you need to run the bot continuously and make it publicly accessible.
+
+
+
+* Using-Selenium
+
+Another fully free alternative for creating a WhatsApp chatbot involves using **Python and Selenium** for WhatsApp Web automation, combined with a Python library to handle natural language processing. Here’s how you can set this up:
+
+## **Using Python, Selenium, and a Free NLP Service**
+
+**Overview:**
+
+- **Selenium** is a browser automation tool that can be used to interact with WhatsApp Web.
+  
+- **ChatGPT API** or other free NLP services can handle the chatbot logic.
+  
+- This method involves coding and running a local script.
+<br>
+
+## **Steps to Create a Free WhatsApp Chatbot Using Selenium**
+
+## **1. Set Up Your Environment**
+
+1. **Install Python:**
+   - Download and install Python from [python.org](https://www.python.org/downloads/).
+
+2. **Install Required Packages:**
+   - Install `selenium` and `webdriver-manager` packages for browser automation.
+   - Install an NLP library or use an open-source model for processing messages.
+   ```bash
+   pip install selenium webdriver-manager
+   ```
+
+3. **Download WebDriver:**
+   - For Chrome, download the ChromeDriver from [ChromeDriver](https://sites.google.com/chromium.org/driver/). Place it in your PATH or specify the path in your script.
+<br>
+
+## **2. Write Your Chatbot Code**
+
+1. **Create a Python Script Named `whatsapp_bot.py`:**
+
+   Here’s an example of how you can set up a basic chatbot using Selenium and a free NLP service:
+
+   ```python
+   from selenium import webdriver
+   from selenium.webdriver.common.by import By
+   from selenium.webdriver.chrome.service import Service
+   from selenium.webdriver.chrome.options import Options
+   from webdriver_manager.chrome import ChromeDriverManager
+   import time
+   import requests
+
+   # Set up Selenium WebDriver
+   chrome_options = Options()
+   chrome_options.add_argument("--user-data-dir=./User_Data")  # Keep session
+   driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+   # Navigate to WhatsApp Web
+   driver.get('https://web.whatsapp.com/')
+   print("Please scan the QR code to log in.")
+
+   time.sleep(20)  # Wait for user to scan QR code
+
+   def get_chat_messages():
+       messages = driver.find_elements(By.CSS_SELECTOR, "div._1pJ9J")
+       return [msg.text for msg in messages]
+
+   def send_message(contact_name, message):
+       search_box = driver.find_element(By.CSS_SELECTOR, "div._2_1wd.copyable-text.selectable-text")
+       search_box.click()
+       search_box.send_keys(contact_name)
+       time.sleep(2)  # Wait for search results
+
+       contact = driver.find_element(By.XPATH, f"//span[@title='{contact_name}']")
+       contact.click()
+
+       message_box = driver.find_element(By.CSS_SELECTOR, "div._2A8P4.copyable-text.selectable-text")
+       message_box.click()
+       message_box.send_keys(message)
+       message_box.send_keys("\n")  # Send message
+
+   def process_message(message):
+       # Replace this with your NLP logic or API call
+       response = requests.post('https://api.openai.com/v1/engines/davinci/completions',
+                                headers={
+                                    'Authorization': 'Bearer YOUR_OPENAI_API_KEY',
+                                    'Content-Type': 'application/json'
+                                },
+                                json={
+                                    'prompt': message,
+                                    'max_tokens': 50
+                                }).json()
+       return response['choices'][0]['text'].strip()
+
+   while True:
+       messages = get_chat_messages()
+       for msg in messages:
+           response = process_message(msg)
+           send_message('Contact Name', response)  # Replace 'Contact Name' with actual contact
+
+       time.sleep(10)  # Wait before checking for new messages
+   ```
+
+
+   **Notes:**
+   - Replace `'YOUR_OPENAI_API_KEY'` with your OpenAI API key or use another NLP service.
+     
+   - Update `Contact Name` with the name of the contact or group you want to send responses to.
+<br>
+
+## **3. Run Your Chatbot**
+
+1. **Execute the Script:**
+   - Run your script using Python:
+     ```bash
+     python whatsapp_bot.py
+     ```
+
+2. **Monitor and Test:**
+   - Monitor the script’s output and test the chatbot by sending messages to the WhatsApp contact or group.
+<br>
+
+## **4. Deployment (Optional)**
+
+- **Local Server:** Keep the script running on your local machine.
+  
+- **Cloud Hosting:** For continuous operation, consider deploying the script on a cloud server like AWS, Heroku, or Google Cloud.
+<br>
+
+## **Advantages of Using Selenium:**
+
+- **Free:** Selenium and Python are free to use.
+  
+- **Customizable:** Full control over the WhatsApp Web interface and automation logic.
+
+By following these steps, you can create a fully free WhatsApp chatbot using Selenium for automation and a free NLP service for processing messages. This method offers flexibility and customization while avoiding paid services.
