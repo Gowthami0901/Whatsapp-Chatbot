@@ -1,6 +1,7 @@
 * [Venom Bot](#Venom-Bot)
 * [Using Python, Selenium, and a Free NLP Service](#Using-Selenium)
-
+* [Yowsup](#Yowsup)
+<br>
 
 # Venom-Bot
 
@@ -328,3 +329,133 @@ Another fully free alternative for creating a WhatsApp chatbot involves using **
 - **Customizable:** Full control over the WhatsApp Web interface and automation logic.
 
 By following these steps, you can create a fully free WhatsApp chatbot using Selenium for automation and a free NLP service for processing messages. This method offers flexibility and customization while avoiding paid services.
+
+
+
+# Yowsup
+
+To create a WhatsApp chatbot using **Python, Flask, and the yowsup library**. Yowsup is a Python library that allows you to build applications that communicate with WhatsApp. This method does not rely on Twilio or any paid service, making it a cost-effective solution.
+
+## **Steps to Create a Free WhatsApp Chatbot Using Yowsup**
+
+## **1. Set Up Your Environment**
+
+1. **Install Python:**
+   - Download and install Python from [python.org](https://www.python.org/downloads/).
+
+2. **Install Yowsup:**
+   - Yowsup is an open-source library for Python that allows you to connect to WhatsApp.
+   - Install it by following the instructions below.
+
+3. **Install Flask:**
+   - Flask is a lightweight WSGI web application framework in Python.
+   ```bash
+   pip install Flask
+   ```
+
+
+## **2. Install Yowsup**
+
+1. **Clone the Yowsup Repository:**
+   ```bash
+   git clone https://github.com/tgalal/yowsup.git
+   cd yowsup
+   ```
+
+2. **Install Yowsup Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## **3. Configure Yowsup**
+
+1. **Set Up Yowsup:**
+   - You will need to register a WhatsApp account with Yowsup. Follow the [Yowsup documentation](https://github.com/tgalal/yowsup/wiki/yowsup-cli-2.0) to register your phone number and get the necessary credentials.
+
+
+## **4. Write Your Chatbot Code**
+
+1. **Create a Python Script Named `whatsapp_bot.py`:**
+
+   ```python
+   from flask import Flask, request, jsonify
+   import subprocess
+
+   app = Flask(__name__)
+
+   # Endpoint to handle incoming messages from WhatsApp
+   @app.route('/webhook', methods=['POST'])
+   def webhook():
+       incoming_message = request.json['Body']
+       sender = request.json['From']
+
+       response_message = process_message(incoming_message)
+       send_message(sender, response_message)
+
+       return jsonify({'status': 'success'})
+
+   def process_message(message):
+       # Process the incoming message and generate a response
+       message = message.lower()
+       if 'hi' in message or 'hello' in message:
+           return ('Hi there! Welcome to the HR Bot. How can I assist you today?'
+                   '\nType "job" to see available jobs.'
+                   '\nType "apply" to apply for a job.'
+                   '\nType "interview" to schedule an interview.'
+                   '\nType "status" to check your application status.'
+                   '\nType "faq" for frequently asked questions.')
+       elif 'job' in message:
+           return 'Available jobs: Software Engineer, Data Scientist, HR Manager.'
+       elif 'apply' in message:
+           return 'To apply for a position, please visit our careers page or send your resume to hr@example.com.'
+       elif 'interview' in message:
+           return 'To schedule an interview, please provide your availability.'
+       elif 'status' in message:
+           return 'Your application status: under review.'
+       elif 'faq' in message:
+           return ('Here are some frequently asked questions:\n'
+                   '1. How to apply?\n'
+                   '2. What are the interview steps?\n'
+                   '3. What are the job requirements?')
+       else:
+           return 'Sorry, I did not understand that. Please type "hi" to see the menu.'
+
+   def send_message(to, message):
+       # Use Yowsup to send the message
+       subprocess.call(['yowsup-cli', 'demos', '--login', 'phone:password', '--send', f'{to} "{message}"'])
+
+   if __name__ == '__main__':
+       app.run(debug=True)
+   ```
+
+   **Notes:**
+   - Replace `phone:password` with your registered phone number and password obtained during Yowsup setup.
+   - Customize the `process_message` function as needed.
+
+
+### **5. Run Your Chatbot**
+
+1. **Start the Flask App:**
+   ```bash
+   python whatsapp_bot.py
+   ```
+
+2. **Monitor and Test:**
+   - Test the chatbot by sending messages to your registered WhatsApp number.
+
+
+## **6. Deployment (Optional)**
+
+- **Local Server:** Keep the script running on your local machine.
+  
+- **Cloud Hosting:** For continuous operation, consider deploying the script on a cloud server like AWS, Heroku, or Google Cloud.
+
+
+
+## **Advantages of Using Yowsup:**
+
+- **Free:** Yowsup is open-source and free to use.
+  
+- **Customizable:** Full control over the WhatsApp interface and automation logic.
+
+
