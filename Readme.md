@@ -1,6 +1,7 @@
 * [Venom Bot](#Venom-Bot)
 * [Using Python, Selenium, and a Free NLP Service](#Using-Selenium)
 
+
 # Venom-Bot
 
 To create a WhatsApp chatbot you can use free and open-source solutions or services that offer free tiers. Here's a method using **WhatsApp Web automation with the `venom-bot` library**, which is a popular tool for interacting with WhatsApp without needing a paid API.
